@@ -1,0 +1,27 @@
+n=int(input("enter the number of  nodes"))
+cost=[[0 for i in range(n)]for j in range(n)]
+print("enter the adjacency atrix in integer")
+for i in range(n):
+    for j in range(n):
+        temp=int(input())
+        cost[i][j]=temp
+print("the adjacency matrix in integer")
+for i in range(n):
+    for j in range(n):
+        if cost[i][j]==999:
+            print('INF',end="\t")
+        else:
+            print(cost[i][j],end="\t")
+    print("\n")
+for k in range(n):
+    for i in range(n):
+        for j in range(n):
+            cost[i][j]=min(cost[i][j],cost[i][k]+cost[k][j])
+print("******FLOYD WARSHALLS*****")
+for i in range(n):
+    for j in range(n):
+        if cost[i][j]==999:
+            print('INF',end="\t")
+        else:
+            print(cost[i][j],end="\t")
+    print("\n")
