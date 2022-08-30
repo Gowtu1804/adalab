@@ -1,0 +1,25 @@
+maxi=9999999
+n=int(input("enter the number of nodes"))
+s=[False for i in range(n)]
+def main(n,cost):
+    ne=0
+    s[0]=True
+    while ne<n-1:
+        minimum=maxi
+        x=y=0
+        for i in range(n):
+            if s[i]:
+                for j in range(n):
+                    if not s[j] and cost[i][j]:
+                        if minimum>cost[i][j]:
+                            minimum=cost[i][j]
+        print(x,"---->",y,":",cost[x][y])
+        s[y]=True
+        ne+=1
+cost=[[int(x) for x in input().split()]for j in range(n)]
+for i in range(n):
+    for j in range(n):
+        if cost[i][j]==0:
+            cost[i][j]=maxi
+print("the shortest path using prim's algorithm is:\n")
+main(n,cost)
